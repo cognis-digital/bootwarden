@@ -1,12 +1,12 @@
-"""Synthetic UEFI firmware-image builder shared by the UEFISCAN demos.
+"""Synthetic UEFI firmware-image builder shared by the BOOTWARDEN demos.
 
 Standard library only. Every primitive emits bytes that match the *real*
-on-disk structures UEFISCAN parses, so a demo image built here exercises the
+on-disk structures BOOTWARDEN parses, so a demo image built here exercises the
 same code paths a genuine SPI-flash dump would:
 
 * ``firmware_volume`` - a valid ``EFI_FIRMWARE_VOLUME_HEADER`` whose ``_FVH``
   signature sits at offset 40 and whose 16-bit header checksum is correct
-  (UEFISCAN validates the checksum, so a bare signature is not enough).
+  (BOOTWARDEN validates the checksum, so a bare signature is not enough).
 * ``secureboot_vars`` - the UTF-16LE variable names (PK / KEK / db / dbx) as
   they appear in the authenticated variable store.
 * ``pe_module`` - a minimal but well-formed PE32+ image, optionally carrying a
@@ -91,7 +91,7 @@ def pe_module(signed: bool, subsystem: int = 11) -> bytes:
 def te_module(subsystem: int = 11) -> bytes:
     """Return a minimal TE (Terse Executable) image. Always unsigned.
 
-    UEFISCAN sanity-checks the Subsystem byte at offset 0x14, so we set a valid
+    BOOTWARDEN sanity-checks the Subsystem byte at offset 0x14, so we set a valid
     UEFI subsystem (11 = boot-service driver) and pad to the required length.
     """
     te = bytearray(0x28)

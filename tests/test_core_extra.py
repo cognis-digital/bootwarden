@@ -5,7 +5,7 @@ import sys
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from uefiscan import core
+from bootwarden import core
 from _fwfix import load_builder, sample_failing, sample_clean
 
 
@@ -165,7 +165,7 @@ def test_multi_volume_info():
 # --- result serialisation -------------------------------------------------- #
 def test_to_dict_shape():
     d = core.audit_bytes(sample_failing(), path="p").to_dict()
-    assert d["tool"] == "uefiscan"
+    assert d["tool"] == "bootwarden"
     assert set(d["modules"]) == {"total", "signed", "unsigned"}
     assert d["verdict"] in ("PASS", "FAIL")
 

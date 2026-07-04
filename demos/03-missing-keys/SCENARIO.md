@@ -12,8 +12,8 @@ key-enrollment step was skipped, so the platform will boot anything.
 ## Run it
 
 ```sh
-python -m uefiscan scan demos/03-missing-keys/firmware.bin
-python -m uefiscan scan demos/03-missing-keys/firmware.bin --format json
+python -m bootwarden scan demos/03-missing-keys/firmware.bin
+python -m bootwarden scan demos/03-missing-keys/firmware.bin --format json
 ```
 
 ## Expected result

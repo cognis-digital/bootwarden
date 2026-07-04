@@ -1,22 +1,22 @@
-# uefiscan — Advanced usage
+# bootwarden — Advanced usage
 
 ## CI gate (fail the build on findings)
 ```yaml
-- run: pip install cognis-uefiscan
-- run: uefiscan scan . --format sarif --out uefiscan.sarif --fail-on high
+- run: pip install bootwarden
+- run: bootwarden scan . --format sarif --out bootwarden.sarif --fail-on high
 - uses: github/codeql-action/upload-sarif@v3
-  with: { sarif_file: uefiscan.sarif }
+  with: { sarif_file: bootwarden.sarif }
 ```
 
 ## Pipe into a SIEM / webhook
 ```bash
-uefiscan scan . --format json | python integrations/webhook.py --url "$COGNIS_WEBHOOK_URL"
+bootwarden scan . --format json | python integrations/webhook.py --url "$COGNIS_WEBHOOK_URL"
 ```
 
 ## Drive it from an AI agent (MCP)
 ```jsonc
 // claude_desktop_config.json
-{ "mcpServers": { "uefiscan": { "command": "uefiscan", "args": ["mcp"] } } }
+{ "mcpServers": { "bootwarden": { "command": "bootwarden", "args": ["mcp"] } } }
 ```
 
 ## Run a language port instead of Python

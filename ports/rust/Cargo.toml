@@ -1,9 +1,9 @@
 [package]
-name = "uefiscan"
+name = "bootwarden"
 version = "0.2.0"
 edition = "2021"
 license = "LicenseRef-COCL-1.0"
 
 [[bin]]
-name = "uefiscan"
+name = "bootwarden"
 path = "src/main.rs"

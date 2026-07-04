@@ -18,9 +18,9 @@ date). Two of the sample CVEs are genuine KEV entries — e.g.
 `CVE-2025-47827`, an IGEL OS **Secure Boot bypass** — and are flagged; an
 invented `CVE-2099-00000` is correctly reported as *not* in KEV.
 
-The same data also drives `uefiscan feeds get --cve <id> --offline`.
+The same data also drives `bootwarden feeds get --cve <id> --offline`.
 
 Edge / air-gap: the run sets `COGNIS_FEEDS_CACHE` to the committed fixture and
 uses `offline=True`, so it never touches the network. In production you would
-`uefiscan feeds update` while connected, `snapshot-export` the cache, sneakernet
+`bootwarden feeds update` while connected, `snapshot-export` the cache, sneakernet
 it into the enclave, `snapshot-import`, then run with `--offline`.

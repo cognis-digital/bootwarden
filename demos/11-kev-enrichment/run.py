@@ -20,7 +20,7 @@ _FIXTURE = os.path.join(_ROOT, "tests", "fixtures", "feeds-cache")
 
 def run(offline: bool = True) -> dict:
     os.environ["COGNIS_FEEDS_CACHE"] = _FIXTURE
-    from uefiscan import feeds
+    from bootwarden import feeds
 
     # A representative component CVE list for a UEFI/BMC platform. Two of these
     # are real KEV entries; the last is deliberately not exploited-in-the-wild.

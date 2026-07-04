@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata: { name: uefiscan, labels: { app: uefiscan } }
+metadata: { name: bootwarden, labels: { app: bootwarden } }
 spec:
   replicas: 1
-  selector: { matchLabels: { app: uefiscan } }
+  selector: { matchLabels: { app: bootwarden } }
   template:
-    metadata: { labels: { app: uefiscan } }
+    metadata: { labels: { app: bootwarden } }
     spec:
       containers:
-        - name: uefiscan
-          image: ghcr.io/cognis-digital/uefiscan:latest
+        - name: bootwarden
+          image: ghcr.io/cognis-digital/bootwarden:latest
           ports: [{ containerPort: 8000 }]
           resources:
             requests: { cpu: "50m", memory: "64Mi" }
@@ -17,7 +17,7 @@ spec:
 ---
 apiVersion: v1
 kind: Service
-metadata: { name: uefiscan }
+metadata: { name: bootwarden }
 spec:
-  selector: { app: uefiscan }
+  selector: { app: bootwarden }
   ports: [{ port: 80, targetPort: 8000 }]

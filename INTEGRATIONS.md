@@ -1,6 +1,6 @@
 # Integrations
 
-**uefiscan** plugs into your stack through [`cognis-connect`](https://github.com/cognis-digital/cognis-connect),
+**bootwarden** plugs into your stack through [`cognis-connect`](https://github.com/cognis-digital/cognis-connect),
 the suite's integration SDK. It maps any tool's JSON into a canonical **Finding** and
 forwards it to the platforms that fit the **Cloud / supply-chain hardening** domain.
 
@@ -10,14 +10,14 @@ pip install "git+https://github.com/cognis-digital/cognis-connect.git"
 
 ## Forward findings to a platform
 
-Once `uefiscan` emits JSON findings, pipe them straight to a destination — `--dry-run`
+Once `bootwarden` emits JSON findings, pipe them straight to a destination — `--dry-run`
 previews the exact request without sending:
 
 ```bash
-uefiscan ... --format json | cognis-connect emit --to sigma   # Sigma rules
-uefiscan ... --format json | cognis-connect emit --to splunk --url $URL --token $TOK   # Splunk HEC
-uefiscan ... --format json | cognis-connect emit --to elastic --url $URL --token $TOK   # Elastic _bulk
-uefiscan ... --format json | cognis-connect emit --to webhook --url $URL --token $TOK   # generic webhook
+bootwarden ... --format json | cognis-connect emit --to sigma   # Sigma rules
+bootwarden ... --format json | cognis-connect emit --to splunk --url $URL --token $TOK   # Splunk HEC
+bootwarden ... --format json | cognis-connect emit --to elastic --url $URL --token $TOK   # Elastic _bulk
+bootwarden ... --format json | cognis-connect emit --to webhook --url $URL --token $TOK   # generic webhook
 ```
 
 Recommended for this domain: **sigma, splunk, elastic, webhook**. The full set is
@@ -26,11 +26,11 @@ Recommended for this domain: **sigma, splunk, elastic, webhook**. The full set i
 ## From Python
 
 `normalize()` maps any record (field/indicator aliases handled) into a `Finding`, so this
-works whatever `uefiscan` outputs:
+works whatever `bootwarden` outputs:
 
 ```python
 from cognis_connect import normalize, sigma
-findings = [normalize(rec, source="uefiscan") for rec in records]   # records = your JSON output
+findings = [normalize(rec, source="bootwarden") for rec in records]   # records = your JSON output
 print(sigma.to_event(findings))
 ```
 

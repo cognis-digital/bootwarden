@@ -1,15 +1,15 @@
-"""Command-line interface for UEFISCAN.
+"""Command-line interface for BOOTWARDEN.
 
 Examples
 --------
   # Friendly red/green verdict for a firmware dump
-  uefiscan scan firmware.bin
+  bootwarden scan firmware.bin
 
   # Machine-readable output for CI / piping
-  uefiscan scan firmware.bin --format json | jq .verdict
+  bootwarden scan firmware.bin --format json | jq .verdict
 
   # Exit code is non-zero when the audit FAILS (use it as a CI gate)
-  uefiscan scan firmware.bin && echo OK || echo "Secure Boot problems"
+  bootwarden scan firmware.bin && echo OK || echo "Secure Boot problems"
 """
 
 from __future__ import annotations
@@ -35,7 +35,7 @@ def _color(text: str, code: str, enable: bool) -> str:
 
 def _render_table(result: AuditResult, use_color: bool) -> str:
     lines: List[str] = []
-    lines.append("UEFISCAN report for {}".format(result.path))
+    lines.append("BOOTWARDEN report for {}".format(result.path))
     lines.append("  size               : {:,} bytes".format(result.size))
     lines.append("  firmware volumes   : {}".format(result.firmware_volumes))
 
@@ -93,9 +93,9 @@ def _build_parser() -> argparse.ArgumentParser:
         ),
         epilog=(
             "examples:\n"
-            "  uefiscan scan firmware.bin\n"
-            "  uefiscan scan firmware.bin --format json | jq .verdict\n"
-            "  uefiscan scan dump.rom && echo SAFE || echo PROBLEM\n"
+            "  bootwarden scan firmware.bin\n"
+            "  bootwarden scan firmware.bin --format json | jq .verdict\n"
+            "  bootwarden scan dump.rom && echo SAFE || echo PROBLEM\n"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
@@ -212,7 +212,7 @@ def _build_parser() -> argparse.ArgumentParser:
 
 
 def _run_feeds(args, parser) -> int:
-    """Handle the `uefiscan feeds ...` data-feed enrichment subcommand."""
+    """Handle the `bootwarden feeds ...` data-feed enrichment subcommand."""
     from . import datafeeds, feeds as feedlib
 
     cmd = getattr(args, "feeds_cmd", None)
@@ -230,7 +230,7 @@ def _run_feeds(args, parser) -> int:
     if cmd == "update":
         fid = args.id
         if fid not in feedlib.RELEVANT_FEEDS:
-            print("error: uefiscan only consumes {}".format(", ".join(feedlib.RELEVANT_FEEDS)),
+            print("error: bootwarden only consumes {}".format(", ".join(feedlib.RELEVANT_FEEDS)),
                   file=sys.stderr)
             return 2
         try:
@@ -244,7 +244,7 @@ def _run_feeds(args, parser) -> int:
     if cmd == "get":
         fid = args.id
         if fid not in feedlib.RELEVANT_FEEDS:
-            print("error: uefiscan only consumes {}".format(", ".join(feedlib.RELEVANT_FEEDS)),
+            print("error: bootwarden only consumes {}".format(", ".join(feedlib.RELEVANT_FEEDS)),
                   file=sys.stderr)
             return 2
         try:
@@ -258,7 +258,7 @@ def _run_feeds(args, parser) -> int:
                     "dateReleased": cat.get("dateReleased", ""),
                 }
         except FileNotFoundError as exc:
-            print("error: {} (run `uefiscan feeds update` while online, or import a snapshot)".format(exc),
+            print("error: {} (run `bootwarden feeds update` while online, or import a snapshot)".format(exc),
                   file=sys.stderr)
             return 2
         except ConnectionError as exc:
@@ -310,7 +310,7 @@ def _run_batch(args) -> int:
     if args.format == "json":
         print(json.dumps(summary, indent=2))
     else:
-        print("UEFISCAN batch scan: {} file(s), {} PASS, {} FAIL".format(
+        print("BOOTWARDEN batch scan: {} file(s), {} PASS, {} FAIL".format(
             summary["scanned"], summary["passed"], summary["failed"]))
         for path, verdict in summary["verdicts"].items():
             print("  {:6} {}".format(verdict, path))
@@ -343,7 +343,7 @@ def _run_sbom(args) -> int:
     try:
         report = feedlib.enrich_cves(cves, offline=args.offline)
     except FileNotFoundError as exc:
-        print("error: {} (run `uefiscan feeds update` while online)".format(exc),
+        print("error: {} (run `bootwarden feeds update` while online)".format(exc),
               file=sys.stderr)
         return 2
     except ConnectionError as exc:

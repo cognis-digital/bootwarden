@@ -21,8 +21,8 @@ _FIXTURE = os.path.abspath(
 # Must be set before importing datafeeds/feeds so cache_dir() resolves to it.
 os.environ["COGNIS_FEEDS_CACHE"] = _FIXTURE
 
-from uefiscan import feeds, datafeeds, core  # noqa: E402
-from uefiscan.cli import main  # noqa: E402
+from bootwarden import feeds, datafeeds, core  # noqa: E402
+from bootwarden.cli import main  # noqa: E402
 
 # Real CVE ids present in the committed fixture.
 KEV_IN_FIXTURE = "CVE-2025-47827"   # IGEL OS Secure Boot bypass

@@ -1,8 +1,8 @@
 # Cognis interop map
 
-How **uefiscan** fits the wider Cognis suite — a composable set of defensive, analytical
+How **bootwarden** fits the wider Cognis suite — a composable set of defensive, analytical
 tools that all run on your own hardware and speak plain **JSON** (or an OpenAI-compatible
-**`/v1`**). `uefiscan` lives in the **Cloud / supply-chain hardening** cluster.
+**`/v1`**). `bootwarden` lives in the **Cloud / supply-chain hardening** cluster.
 
 ```mermaid
 graph LR
@@ -28,35 +28,35 @@ graph LR
 
 | from | relation | to |
 |---|---|---|
-| `uefiscan` | JSON findings compose with | [`sbomgen`](https://github.com/cognis-digital/sbomgen), [`cvecheck`](https://github.com/cognis-digital/cvecheck), [`k8sharden`](https://github.com/cognis-digital/k8sharden), [`tfscan`](https://github.com/cognis-digital/tfscan) |
-| `uefiscan` | AI add-ins are served `/v1` by | [`edgemesh`](https://github.com/cognis-digital/edgemesh) (your fleet) |
-| `uefiscan` | findings can be narrated / reasoned over by | [`humind`](https://github.com/cognis-digital/humind) -> [`agentlex`](https://github.com/cognis-digital/agentlex) |
-| `uefiscan` | export to intel formats via | [`stixgen`](https://github.com/cognis-digital/stixgen) (STIX) / [`attackmap`](https://github.com/cognis-digital/attackmap) (ATT&CK) |
+| `bootwarden` | JSON findings compose with | [`sbomgen`](https://github.com/cognis-digital/sbomgen), [`cvecheck`](https://github.com/cognis-digital/cvecheck), [`k8sharden`](https://github.com/cognis-digital/k8sharden), [`tfscan`](https://github.com/cognis-digital/tfscan) |
+| `bootwarden` | AI add-ins are served `/v1` by | [`edgemesh`](https://github.com/cognis-digital/edgemesh) (your fleet) |
+| `bootwarden` | findings can be narrated / reasoned over by | [`humind`](https://github.com/cognis-digital/humind) -> [`agentlex`](https://github.com/cognis-digital/agentlex) |
+| `bootwarden` | export to intel formats via | [`stixgen`](https://github.com/cognis-digital/stixgen) (STIX) / [`attackmap`](https://github.com/cognis-digital/attackmap) (ATT&CK) |
 
 ## Composition patterns
 
 Everything reads/writes JSON, so tools chain with ordinary pipes; nothing leaves the box.
 
-**1 — chain within the cloud / supply-chain hardening cluster.** `uefiscan` output feeds the next tool:
+**1 — chain within the cloud / supply-chain hardening cluster.** `bootwarden` output feeds the next tool:
 ```bash
-uefiscan ... --format json > out.json          # this tool's findings (see `uefiscan --help`)
+bootwarden ... --format json > out.json          # this tool's findings (see `bootwarden --help`)
 sbomgen ... < out.json                      # the cluster sibling consumes them
 ```
 
 **2 — enrich with the private-AI backbone.** Point add-ins at one `/v1` for the whole fleet:
 ```bash
 export OPENAI_BASE_URL=http://localhost:8080/v1   # an edgemesh gateway over your fleet
-uefiscan ...                                         # vision / reasoning add-ins light up
+bootwarden ...                                         # vision / reasoning add-ins light up
 ```
 
 **3 — export findings to your SOC's formats.**
 ```bash
-uefiscan ... --format json | stixgen from-json > bundle.stix.json   # STIX 2.1
-uefiscan ... --format json | attackmap map > attack.json            # ATT&CK techniques
+bootwarden ... --format json | stixgen from-json > bundle.stix.json   # STIX 2.1
+bootwarden ... --format json | attackmap map > attack.json            # ATT&CK techniques
 ```
 
-**4 — narrate through cognition + agents.** `humind` extracts salience from `uefiscan`'s
-output; `agentlex` holds it as KB facts and fires Horn rules to escalate. `uefiscan` slots
+**4 — narrate through cognition + agents.** `humind` extracts salience from `bootwarden`'s
+output; `agentlex` holds it as KB facts and fires Horn rules to escalate. `bootwarden` slots
 into the **Threat-intel export** stack below.
 
 ## Reference stacks

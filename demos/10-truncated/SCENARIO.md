@@ -10,8 +10,8 @@ empty image.
 ## Run it
 
 ```sh
-python -m uefiscan scan demos/10-truncated/firmware.bin
-python -m uefiscan scan demos/10-truncated/firmware.bin --format json | jq .findings
+python -m bootwarden scan demos/10-truncated/firmware.bin
+python -m bootwarden scan demos/10-truncated/firmware.bin --format json | jq .findings
 ```
 
 ## Expected result

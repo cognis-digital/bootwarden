@@ -1,4 +1,4 @@
-"""Build a tiny synthetic UEFI firmware image for the UEFISCAN demo.
+"""Build a tiny synthetic UEFI firmware image for the BOOTWARDEN demo.
 
 Standard library only. Produces `sample_firmware.bin` next to this script:
 it has one valid firmware volume, the PK/KEK/db Secure Boot variables (but

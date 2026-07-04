@@ -13,8 +13,8 @@ confirmation that Secure Boot was provisioned correctly before the unit ships.
 ## Run it
 
 ```sh
-python -m uefiscan scan demos/02-clean-pass/firmware.bin
-python -m uefiscan scan demos/02-clean-pass/firmware.bin --format json | jq .verdict
+python -m bootwarden scan demos/02-clean-pass/firmware.bin
+python -m bootwarden scan demos/02-clean-pass/firmware.bin --format json | jq .verdict
 ```
 
 ## Expected result

@@ -1,4 +1,4 @@
-"""Smoke tests for UEFISCAN: import core, build the demo image, audit it."""
+"""Smoke tests for BOOTWARDEN: import core, build the demo image, audit it."""
 
 import importlib.util
 import json
@@ -7,8 +7,8 @@ import sys
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from uefiscan import core, TOOL_NAME, TOOL_VERSION
-from uefiscan.cli import main
+from bootwarden import core, TOOL_NAME, TOOL_VERSION
+from bootwarden.cli import main
 
 _DEMO_DIR = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "..", "demos", "01-basic")
@@ -37,7 +37,7 @@ def _build_sample():
 
 
 def test_metadata():
-    assert TOOL_NAME == "uefiscan"
+    assert TOOL_NAME == "bootwarden"
     assert TOOL_VERSION.count(".") == 2
 
 
@@ -114,7 +114,7 @@ def test_cli_json_and_exit_code(tmp_path, capsys):
     assert rc == 1  # FAIL -> non-zero for CI gating
     out = capsys.readouterr().out
     assert '"verdict": "FAIL"' in out
-    assert '"tool": "uefiscan"' in out
+    assert '"tool": "bootwarden"' in out
 
 
 def test_cli_missing_file():
@@ -129,7 +129,7 @@ def test_sarif_structure():
     assert sarif["version"] == "2.1.0"
     run = sarif["runs"][0]
     driver = run["tool"]["driver"]
-    assert driver["name"] == "uefiscan"
+    assert driver["name"] == "bootwarden"
     assert driver["version"] == "1.2.3"
     # info-level findings are excluded; the unsigned-modules error must appear.
     rule_ids = {r["ruleId"] for r in run["results"]}

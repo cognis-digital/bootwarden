@@ -12,8 +12,8 @@ would hide behind.
 ## Run it
 
 ```sh
-python -m uefiscan scan demos/04-unsigned-driver/firmware.bin
-python -m uefiscan scan demos/04-unsigned-driver/firmware.bin --format json \
+python -m bootwarden scan demos/04-unsigned-driver/firmware.bin
+python -m bootwarden scan demos/04-unsigned-driver/firmware.bin --format json \
   | jq '.findings[] | select(.code=="unsigned-module") | .offset'
 ```
 

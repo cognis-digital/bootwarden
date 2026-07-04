@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Shell port of the UEFISCAN core check (passive/offline).
+# Shell port of the BOOTWARDEN core check (passive/offline).
 #
 # A lightweight, dependency-light triage: detect the EFI firmware-volume
 # signature ("_FVH"), the UTF-16LE Secure Boot variable names (PK/KEK/db/dbx),
@@ -9,7 +9,7 @@
 # Requires: a POSIX shell + `od` (or `xxd`) + `grep`. Pure local file analysis.
 set -euo pipefail
 
-usage() { echo "usage: uefiscan.sh <firmware.bin>" >&2; exit 2; }
+usage() { echo "usage: bootwarden.sh <firmware.bin>" >&2; exit 2; }
 
 [ $# -ge 1 ] || usage
 IMG="$1"
@@ -57,7 +57,7 @@ add() { FINDINGS="${FINDINGS:+$FINDINGS,}\"$1\""; VERDICT="FAIL"; }
 [ "$FV" -eq 0 ] && add "no-firmware-volume"
 { [ "$PK" = false ] || [ "$KEK" = false ] || [ "$DB" = false ]; } && add "missing-secureboot-keys"
 
-printf '{"tool":"uefiscan","verdict":"%s","firmware_volume":%s,"secureboot_vars":{"PK":%s,"KEK":%s,"db":%s,"dbx":%s},"has_modules":%s,"findings":[%s]}\n' \
+printf '{"tool":"bootwarden","verdict":"%s","firmware_volume":%s,"secureboot_vars":{"PK":%s,"KEK":%s,"db":%s,"dbx":%s},"has_modules":%s,"findings":[%s]}\n' \
   "$VERDICT" "$FV" "$PK" "$KEK" "$DB" "$DBX" "$MODS" "$FINDINGS"
 
 [ "$VERDICT" = "PASS" ] && exit 0 || exit 1

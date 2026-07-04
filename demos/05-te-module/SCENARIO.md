@@ -2,7 +2,7 @@
 
 **Where this comes from.** Early-boot SEC/PEI-phase code is frequently stored
 as **TE** images rather than full PE/COFF. TE images have no Authenticode
-certificate table, so UEFISCAN always reports them as unsigned - useful for
+certificate table, so BOOTWARDEN always reports them as unsigned - useful for
 inventorying exactly which early-boot modules ride below the Secure Boot
 signature check.
 
@@ -13,8 +13,8 @@ signature check.
 ## Run it
 
 ```sh
-python -m uefiscan scan demos/05-te-module/firmware.bin
-python -m uefiscan scan demos/05-te-module/firmware.bin --format json \
+python -m bootwarden scan demos/05-te-module/firmware.bin
+python -m bootwarden scan demos/05-te-module/firmware.bin --format json \
   | jq '.modules'
 ```
 

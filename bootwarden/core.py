@@ -1,4 +1,4 @@
-"""Core engine for UEFISCAN.
+"""Core engine for BOOTWARDEN.
 
 Real parsing logic (no stubs):
 
@@ -19,7 +19,7 @@ Real parsing logic (no stubs):
 
 The public surface is small and importable:
 
-    from uefiscan.core import audit_image
+    from bootwarden.core import audit_image
     result = audit_image("firmware.bin")
     print(result.verdict)        # "PASS" or "FAIL"
     print(result.to_dict())
@@ -96,7 +96,7 @@ class AuditResult:
 
     def to_dict(self) -> dict:
         return {
-            "tool": "uefiscan",
+            "tool": "bootwarden",
             "path": self.path,
             "size": self.size,
             "verdict": self.verdict,
@@ -152,8 +152,8 @@ class AuditResult:
                 {
                     "tool": {
                         "driver": {
-                            "name": "uefiscan",
-                            "informationUri": "https://github.com/cognis-digital/uefiscan",
+                            "name": "bootwarden",
+                            "informationUri": "https://github.com/cognis-digital/bootwarden",
                             "version": tool_version or "0.0.0",
                             "rules": rules,
                         }

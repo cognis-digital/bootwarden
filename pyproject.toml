@@ -3,14 +3,14 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "cognis-uefiscan"
+name = "bootwarden"
 version = "0.1.1"
 description = "Audit UEFI firmware dumps for missing Secure Boot keys, unsigned modules, S3 boot-script vulns, and known SMM threats."
 authors = [{name = "Cognis Digital", email = "suite@cognis.digital"}]
 license = {text = "LicenseRef-COCL-1.0"}
 requires-python = ">=3.10"
 readme = "README.md"
-keywords = ["cognis-digital", "cognis-neural-suite", "iot", "uefiscan"]
+keywords = ["cognis-digital", "cognis-neural-suite", "iot", "bootwarden"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "License :: Other/Proprietary License",
@@ -26,20 +26,20 @@ dev = ["pytest>=8.0"]
 
 [project.urls]
 Homepage = "https://cognis.digital"
-Repository = "https://github.com/cognis-digital/uefiscan"
+Repository = "https://github.com/cognis-digital/bootwarden"
 
 [project.scripts]
-"uefiscan-emit" = "uefiscan.connect:emit_main"
-uefiscan = "uefiscan.cli:main"
+"bootwarden-emit" = "bootwarden.connect:emit_main"
+bootwarden = "bootwarden.cli:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["uefiscan"]
+packages = ["bootwarden"]
 # Ship the bundled data-feed catalog alongside datafeeds.py so the feeds
 # command works from an installed wheel (datafeeds loads it from its own dir).
-artifacts = ["uefiscan/data_feeds_2026.json"]
+artifacts = ["bootwarden/data_feeds_2026.json"]
 
 [tool.hatch.build.targets.wheel.force-include]
-"uefiscan/data_feeds_2026.json" = "uefiscan/data_feeds_2026.json"
+"bootwarden/data_feeds_2026.json" = "bootwarden/data_feeds_2026.json"
 
 [tool.hatch.metadata]
 allow-direct-references = true

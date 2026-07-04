@@ -1,6 +1,6 @@
 # Demo 01 - basic Secure Boot audit
 
-This demo runs UEFISCAN against a tiny synthetic UEFI firmware image,
+This demo runs BOOTWARDEN against a tiny synthetic UEFI firmware image,
 `sample_firmware.bin`, that is built by `make_sample.py`.
 
 The sample is crafted to mirror a realistic but **mis-provisioned** firmware
@@ -19,8 +19,8 @@ so the audit fails (which is what you want a CI gate to catch):
 
 ```sh
 python demos/01-basic/make_sample.py        # writes sample_firmware.bin
-python -m uefiscan scan demos/01-basic/sample_firmware.bin
-python -m uefiscan scan demos/01-basic/sample_firmware.bin --format json
+python -m bootwarden scan demos/01-basic/sample_firmware.bin
+python -m bootwarden scan demos/01-basic/sample_firmware.bin --format json
 ```
 
 ## Expected result

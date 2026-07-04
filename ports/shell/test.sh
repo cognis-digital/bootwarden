@@ -3,7 +3,7 @@
 # and asserts the script's verdict + JSON fields. No network.
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
-SCAN="$HERE/uefiscan.sh"
+SCAN="$HERE/bootwarden.sh"
 TMP="$HERE/.testtmp"
 rm -rf "$TMP"; mkdir -p "$TMP"
 trap 'rm -rf "$TMP"' EXIT

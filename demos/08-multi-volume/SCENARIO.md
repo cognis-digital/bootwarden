@@ -1,7 +1,7 @@
 # Demo 08 - a multi-volume laptop image (PASS)
 
 **Where this comes from.** A full SPI dump from a laptop typically contains
-**several** firmware volumes (one per region/phase). This exercises UEFISCAN's
+**several** firmware volumes (one per region/phase). This exercises BOOTWARDEN's
 ability to enumerate more than one valid `_FVH` volume in a single image.
 
 **What's in the image.**
@@ -12,8 +12,8 @@ ability to enumerate more than one valid `_FVH` volume in a single image.
 ## Run it
 
 ```sh
-python -m uefiscan scan demos/08-multi-volume/firmware.bin
-python -m uefiscan scan demos/08-multi-volume/firmware.bin --format json | jq '.firmware_volumes'
+python -m bootwarden scan demos/08-multi-volume/firmware.bin
+python -m bootwarden scan demos/08-multi-volume/firmware.bin --format json | jq '.firmware_volumes'
 ```
 
 ## Expected result

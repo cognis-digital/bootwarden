@@ -1,6 +1,6 @@
-$ uefiscan-emit --help
+$ bootwarden-emit --help
 
-usage: uefiscan [-h] [--version] {scan,feeds,batch,sbom,active} ...
+usage: bootwarden [-h] [--version] {scan,feeds,batch,sbom,active} ...
 
 Audit a UEFI firmware dump for missing Secure Boot keys and unsigned modules. A friendly red/green verdict instead of raw CHIPSEC output.
 
@@ -21,6 +21,6 @@ options:
   --version             show program's version number and exit
 
 examples:
-  uefiscan scan firmware.bin
-  uefiscan scan firmware.bin --format json | jq .verdict
-  uefiscan scan dump.rom && echo SAFE || echo PROBLEM
+  bootwarden scan firmware.bin
+  bootwarden scan firmware.bin --format json | jq .verdict
+  bootwarden scan dump.rom && echo SAFE || echo PROBLEM

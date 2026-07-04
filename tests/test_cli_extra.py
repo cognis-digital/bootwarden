@@ -5,7 +5,7 @@ import sys
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from uefiscan.cli import main, _build_parser
+from bootwarden.cli import main, _build_parser
 from _fwfix import sample_failing, sample_clean
 
 
@@ -72,7 +72,7 @@ def test_unknown_command_rejected():
 
 def test_parser_builds():
     p = _build_parser()
-    assert p.prog == "uefiscan"
+    assert p.prog == "bootwarden"
 
 
 def test_feeds_list(monkeypatch, capsys):
@@ -111,4 +111,4 @@ def test_version_flag(capsys):
         main(["--version"])
     except SystemExit as e:
         assert e.code == 0
-    assert "uefiscan" in capsys.readouterr().out
+    assert "bootwarden" in capsys.readouterr().out

@@ -1,20 +1,20 @@
-"""UEFISCAN MCP server — exposes scan() as an MCP tool for Cognis.Studio."""
+"""BOOTWARDEN MCP server — exposes scan() as an MCP tool for Cognis.Studio."""
 from __future__ import annotations
-from uefiscan.core import scan, to_json
+from bootwarden.core import scan, to_json
 
 def serve() -> int:
     """Start an MCP stdio server. Requires the optional 'mcp' extra:
-        pip install "cognis-uefiscan[mcp]"
+        pip install "bootwarden[mcp]"
     """
     try:
         from mcp.server.fastmcp import FastMCP
     except Exception:
-        print("Install the MCP extra: pip install 'cognis-uefiscan[mcp]'")
+        print("Install the MCP extra: pip install 'bootwarden[mcp]'")
         return 1
-    app = FastMCP("uefiscan")
+    app = FastMCP("bootwarden")
 
     @app.tool()
-    def uefiscan_scan(target: str) -> str:
+    def bootwarden_scan(target: str) -> str:
         """Audit UEFI firmware dumps for missing Secure Boot keys, unsigned modules, S3 boot-script vulns, and known SMM threats.. Returns JSON findings."""
         return to_json(scan(target))
 

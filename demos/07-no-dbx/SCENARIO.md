@@ -12,8 +12,8 @@ bad binaries (think the BlackLotus-class revocations) are not blocked.
 ## Run it
 
 ```sh
-python -m uefiscan scan demos/07-no-dbx/firmware.bin
-python -m uefiscan scan demos/07-no-dbx/firmware.bin --format json | jq '.secureboot_vars'
+python -m bootwarden scan demos/07-no-dbx/firmware.bin
+python -m bootwarden scan demos/07-no-dbx/firmware.bin --format json | jq '.secureboot_vars'
 ```
 
 ## Expected result

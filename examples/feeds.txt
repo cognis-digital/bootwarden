@@ -1,6 +1,6 @@
-$ uefiscan-emit feeds
+$ bootwarden-emit feeds
 
-usage: uefiscan feeds [-h] {list,update,get} ...
+usage: bootwarden feeds [-h] {list,update,get} ...
 
 Edge/air-gap data-feed layer. Ingests the CISA Known Exploited Vulnerabilities
 (KEV) catalog over HTTPS, caches it to disk, and re-serves it offline. Use it

@@ -1,13 +1,13 @@
-"""Native cognis-connect emit for uefiscan — forward findings to any platform.
+"""Native cognis-connect emit for bootwarden — forward findings to any platform.
 
-Maps uefiscan's JSON output to the canonical `Finding` and forwards it via
+Maps bootwarden's JSON output to the canonical `Finding` and forwards it via
 `cognis-connect` (STIX/TAXII, MISP, Sigma, Splunk, Elastic, Slack/Discord, webhook, or a
 `/v1` brief). cognis-connect is a soft dependency:
     pip install "git+https://github.com/cognis-digital/cognis-connect.git"
 
 Usage:
-    uefiscan ... --format json | uefiscan-emit --to stix
-    uefiscan-emit --to slack --url $WEBHOOK --dry-run < findings.json
+    bootwarden ... --format json | bootwarden-emit --to stix
+    bootwarden-emit --to slack --url $WEBHOOK --dry-run < findings.json
 """
 
 from __future__ import annotations
@@ -16,7 +16,7 @@ import argparse
 import json
 import sys
 
-SOURCE = "uefiscan"
+SOURCE = "bootwarden"
 
 
 def map_record(rec: dict) -> dict:

@@ -14,7 +14,7 @@ import sys
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from uefiscan import core  # noqa: E402
+from bootwarden import core  # noqa: E402
 
 _DEMOS = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "demos"))
 

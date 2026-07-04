@@ -1,7 +1,7 @@
 services:
-  uefiscan:
+  bootwarden:
     build: .
-    image: cognis/uefiscan:local
+    image: cognis/bootwarden:local
     restart: unless-stopped
     ports: ["8000:8000"]
     environment:

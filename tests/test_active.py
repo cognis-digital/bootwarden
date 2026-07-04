@@ -11,12 +11,12 @@ import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from uefiscan import active
-from uefiscan.active import (
+from bootwarden import active
+from bootwarden.active import (
     ActiveConfig, RateLimiter, active_audit, enforce_scope,
     NotAuthorizedError, ScopeError, local_hostname, AUTHORIZED_USE_BANNER,
 )
-from uefiscan.cli import main
+from bootwarden.cli import main
 
 
 HOST = local_hostname()

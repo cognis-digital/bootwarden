@@ -1,23 +1,23 @@
 <a name="top"></a>
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:6b46c1,100:2b6cb0&height=120&section=header&text=UEFISCAN&fontSize=48&fontColor=ffffff&fontAlignY=58" width="100%" alt="UEFISCAN"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:6b46c1,100:2b6cb0&height=120&section=header&text=BOOTWARDEN&fontSize=48&fontColor=ffffff&fontAlignY=58" width="100%" alt="BOOTWARDEN"/>
 
-# UEFISCAN
+# BOOTWARDEN
 
 ### Audit UEFI firmware dumps for missing Secure Boot keys, unsigned modules, S3 boot-script vulns, and known SMM threats.
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=3500&pause=1000&color=6B46C1&center=true&vCenter=true&width=720&lines=Audit+UEFI+firmware+dumps+for+missing+Secure+Boot+keys+unsig;Self-hostable+%C2%B7+MCP-native+%C2%B7+CI-ready+%C2%B7+polyglot" width="720"/>
 
-[![PyPI](https://img.shields.io/pypi/v/cognis-uefiscan.svg?color=6b46c1)](https://pypi.org/project/cognis-uefiscan/) [![CI](https://github.com/cognis-digital/uefiscan/actions/workflows/ci.yml/badge.svg)](https://github.com/cognis-digital/uefiscan/actions) [![License: COCL 1.0](https://img.shields.io/badge/License-COCL%201.0-2b6cb0.svg)](LICENSE) [![Suite](https://img.shields.io/badge/Cognis-Neural%20Suite-6b46c1.svg)](https://github.com/cognis-digital)
+[![PyPI](https://img.shields.io/pypi/v/bootwarden.svg?color=6b46c1)](https://pypi.org/project/bootwarden/) [![CI](https://github.com/cognis-digital/bootwarden/actions/workflows/ci.yml/badge.svg)](https://github.com/cognis-digital/bootwarden/actions) [![License: COCL 1.0](https://img.shields.io/badge/License-COCL%201.0-2b6cb0.svg)](LICENSE) [![Suite](https://img.shields.io/badge/Cognis-Neural%20Suite-6b46c1.svg)](https://github.com/cognis-digital)
 
 *IoT / OT / Embedded — firmware, buses, and device security.*
 
 </div>
 
 ```bash
-pip install cognis-uefiscan
-uefiscan scan .            # → prioritized findings in seconds
+pip install bootwarden
+bootwarden scan .            # → prioritized findings in seconds
 ```
 
 
@@ -27,13 +27,13 @@ uefiscan scan .            # → prioritized findings in seconds
 Real, reproducible output from the tool — runs offline:
 
 ```console
-$ uefiscan-emit --version
-uefiscan 0.1.0
+$ bootwarden-emit --version
+bootwarden 0.1.0
 ```
 
 ```console
-$ uefiscan-emit --help
-usage: uefiscan [-h] [--version] {scan,feeds,batch,sbom,active} ...
+$ bootwarden-emit --help
+usage: bootwarden [-h] [--version] {scan,feeds,batch,sbom,active} ...
 
 Audit a UEFI firmware dump for missing Secure Boot keys and unsigned modules. A friendly red/green verdict instead of raw CHIPSEC output.
 
@@ -54,14 +54,14 @@ options:
   --version             show program's version number and exit
 
 examples:
-  uefiscan scan firmware.bin
-  uefiscan scan firmware.bin --format json | jq .verdict
-  uefiscan scan dump.rom && echo SAFE || echo PROBLEM
+  bootwarden scan firmware.bin
+  bootwarden scan firmware.bin --format json | jq .verdict
+  bootwarden scan dump.rom && echo SAFE || echo PROBLEM
 ```
 
 ```console
-$ uefiscan-emit feeds
-usage: uefiscan feeds [-h] {list,update,get} ...
+$ bootwarden-emit feeds
+usage: bootwarden feeds [-h] {list,update,get} ...
 
 Edge/air-gap data-feed layer. Ingests the CISA Known Exploited Vulnerabilities
 (KEV) catalog over HTTPS, caches it to disk, and re-serves it offline. Use it
@@ -78,7 +78,7 @@ options:
   -h, --help         show this help message and exit
 ```
 
-> Blocks above are real `uefiscan` output — reproduce them from a clone.
+> Blocks above are real `bootwarden` output — reproduce them from a clone.
 
 <!-- cognis:example:end -->
 
@@ -87,47 +87,47 @@ options:
 1. **Install** (Python 3.9+):
 
    ```bash
-   pip install uefiscan
+   pip install bootwarden
    ```
 
 2. **Scan a firmware dump** and print a red/green Secure Boot verdict:
 
    ```bash
-   uefiscan scan firmware.bin
+   bootwarden scan firmware.bin
    ```
 
 3. **Tune output.** Switch to JSON for tooling, SARIF for code-scanning, or
    write the report straight to a file:
 
    ```bash
-   uefiscan scan firmware.bin --format json
-   uefiscan scan firmware.bin --format sarif -o uefiscan.sarif
-   uefiscan scan firmware.bin --no-color
+   bootwarden scan firmware.bin --format json
+   bootwarden scan firmware.bin --format sarif -o bootwarden.sarif
+   bootwarden scan firmware.bin --no-color
    ```
 
 4. **Read the verdict** programmatically with `jq`:
 
    ```bash
-   uefiscan scan firmware.bin --format json | jq .verdict
+   bootwarden scan firmware.bin --format json | jq .verdict
    ```
 
 5. **Gate in CI.** The exit code is non-zero when the audit fails, so the build breaks on an insecure image:
 
    ```bash
-   uefiscan scan firmware.bin || echo "Secure Boot audit FAILED"
+   bootwarden scan firmware.bin || echo "Secure Boot audit FAILED"
    ```
 
 
 ## Contents
 
-- [Why uefiscan?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Demos](#demos) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
+- [Why bootwarden?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Demos](#demos) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
 
 <a name="why"></a>
-## Why uefiscan?
+## Why bootwarden?
 
 Supply-chain firmware-implant fear (post-LogoFAIL/BlackLotus) — a friendly CLI wrapper that gives a red/green verdict instead of CHIPSEC's wall of output.
 
-`uefiscan` is single-purpose, scriptable, and self-hostable: point it at a target, get prioritized results in the format your workflow already speaks (table · JSON · SARIF), gate CI on it, and let agents drive it over MCP.
+`bootwarden` is single-purpose, scriptable, and self-hostable: point it at a target, get prioritized results in the format your workflow already speaks (table · JSON · SARIF), gate CI on it, and let agents drive it over MCP.
 
 <div align="right"><a href="#top">↑ back to top</a></div>
 
@@ -148,12 +148,12 @@ Supply-chain firmware-implant fear (post-LogoFAIL/BlackLotus) — a friendly CLI
 ## Quick start
 
 ```bash
-pip install cognis-uefiscan
-uefiscan --version
-uefiscan scan firmware.bin                  # red/green Secure Boot verdict
-uefiscan scan firmware.bin --format json    # machine-readable
-uefiscan scan firmware.bin --format sarif -o uefiscan.sarif   # code-scanning
-uefiscan scan firmware.bin || echo FAIL     # CI gate (non-zero exit on FAIL)
+pip install bootwarden
+bootwarden --version
+bootwarden scan firmware.bin                  # red/green Secure Boot verdict
+bootwarden scan firmware.bin --format json    # machine-readable
+bootwarden scan firmware.bin --format sarif -o bootwarden.sarif   # code-scanning
+bootwarden scan firmware.bin || echo FAIL     # CI gate (non-zero exit on FAIL)
 ```
 
 <div align="right"><a href="#top">↑ back to top</a></div>
@@ -161,7 +161,7 @@ uefiscan scan firmware.bin || echo FAIL     # CI gate (non-zero exit on FAIL)
 <a name="modes"></a>
 ## Passive (default) vs active (authorized-use only)
 
-UEFISCAN is a **defensive** tool. It runs in two modes.
+BOOTWARDEN is a **defensive** tool. It runs in two modes.
 
 ### Passive mode — the safe default (offline, no device, no network)
 
@@ -169,11 +169,11 @@ Everything passive analyses an artifact **you already have** and never contacts
 a host or a device:
 
 ```bash
-uefiscan scan firmware.bin                     # audit a single firmware dump
-uefiscan batch ./dumps/ --format json          # audit a directory of dumps
-uefiscan sbom bom.cdx.json --offline           # extract component CVEs from an
+bootwarden scan firmware.bin                     # audit a single firmware dump
+bootwarden batch ./dumps/ --format json          # audit a directory of dumps
+bootwarden sbom bom.cdx.json --offline           # extract component CVEs from an
                                                 # SBOM and cross-ref CISA KEV
-uefiscan feeds get --cve CVE-2025-47827 --offline
+bootwarden feeds get --cve CVE-2025-47827 --offline
 ```
 
 `scan`, `batch`, `sbom`, and `feeds` are all passive. The `feeds`/`sbom`
@@ -196,12 +196,12 @@ Active mode will refuse to run unless **all** of these are satisfied:
 
 ```bash
 # Reads the LOCAL host's live Secure Boot variables — only if it is in scope.
-uefiscan active --authorized --target-allowlist "$(hostname)" --rate-limit 2
+bootwarden active --authorized --target-allowlist "$(hostname)" --rate-limit 2
 
 # Refused (exit 3): not authorized, empty scope, or host not in the allowlist.
-uefiscan active                                   # refused: OFF by default
-uefiscan active --authorized                      # refused: empty allowlist
-uefiscan active --authorized --target-allowlist other-host   # refused: out of scope
+bootwarden active                                   # refused: OFF by default
+bootwarden active --authorized                      # refused: empty allowlist
+bootwarden active --authorized --target-allowlist other-host   # refused: out of scope
 ```
 
 Every active invocation prints a loud `AUTHORIZED USE ONLY` banner to stderr.
@@ -214,8 +214,8 @@ and a fake clock — they never read real firmware and never touch a network.
 ## Example
 
 ```text
-$ uefiscan scan demos/04-unsigned-driver/firmware.bin
-UEFISCAN report for demos/04-unsigned-driver/firmware.bin
+$ bootwarden scan demos/04-unsigned-driver/firmware.bin
+BOOTWARDEN report for demos/04-unsigned-driver/firmware.bin
   size               : 4,408 bytes
   firmware volumes   : 1
   Secure Boot keys   : PK=yes, KEK=yes, db=yes, dbx=NO
@@ -253,8 +253,8 @@ documented verdict is guaranteed to fire.
 | [`11-kev-enrichment`](demos/11-kev-enrichment/) | Cross-reference component CVEs against **CISA KEV** (offline) | — |
 
 ```bash
-python -m uefiscan scan demos/04-unsigned-driver/firmware.bin
-python -m uefiscan scan demos/09-ci-gate/firmware.bin --format sarif -o uefiscan.sarif
+python -m bootwarden scan demos/04-unsigned-driver/firmware.bin
+python -m bootwarden scan demos/09-ci-gate/firmware.bin --format sarif -o bootwarden.sarif
 python demos/11-kev-enrichment/run.py    # offline KEV cross-reference
 ```
 
@@ -265,7 +265,7 @@ python demos/11-kev-enrichment/run.py    # offline KEV cross-reference
 
 A firmware audit tells you *what's wrong with the image*. The **`feeds`**
 command adds the other half a defender needs: *which of the CVEs riding on this
-platform are being exploited right now*. UEFISCAN ingests the authoritative
+platform are being exploited right now*. BOOTWARDEN ingests the authoritative
 **CISA Known Exploited Vulnerabilities (KEV)** catalog and cross-references it
 against the CVEs attached to your firmware / BMC / boot-chain components.
 
@@ -277,18 +277,18 @@ remediation deadline (CISA BOD 22-01 / 26-04).
 
 ```bash
 # What feed does this tool consume, and how fresh is the local cache?
-uefiscan feeds list
+bootwarden feeds list
 
 # Refresh the on-disk cache (online).
-uefiscan feeds update cisa-kev
+bootwarden feeds update cisa-kev
 
 # Cross-reference a component CVE list — prioritised "patch now" output.
-uefiscan feeds get --cve CVE-2025-47827 --cve CVE-2022-0492 --offline
-uefiscan feeds get --cve CVE-2025-47827 --format json
+bootwarden feeds get --cve CVE-2025-47827 --cve CVE-2022-0492 --offline
+bootwarden feeds get --cve CVE-2025-47827 --format json
 ```
 
 ```python
-from uefiscan import feeds
+from bootwarden import feeds
 report = feeds.enrich_cves(["CVE-2025-47827", "CVE-2022-0492"], offline=True)
 report["patch_now"]          # ['CVE-2025-47827', 'CVE-2022-0492'] — KEV-listed, ordered by due date
 ```
@@ -299,21 +299,21 @@ references a KEV-listed CVE is re-leveled to `error` and annotated
 
 ### Edge / air-gap workflow
 
-The feed layer ([`uefiscan/datafeeds.py`](uefiscan/datafeeds.py) +
-[`data_feeds_2026.json`](uefiscan/data_feeds_2026.json)) is **stdlib-only**:
+The feed layer ([`bootwarden/datafeeds.py`](bootwarden/datafeeds.py) +
+[`data_feeds_2026.json`](bootwarden/data_feeds_2026.json)) is **stdlib-only**:
 fetch over HTTPS → cache to disk → re-serve with `offline=True`, never touching
 the network. The cache directory is `COGNIS_FEEDS_CACHE` (default
 `~/.cache/cognis-feeds`). To run on a disconnected enclave:
 
 ```bash
 # On a connected staging box:
-uefiscan feeds update cisa-kev
-python -m uefiscan.datafeeds snapshot-export kev-snapshot.tar.gz
+bootwarden feeds update cisa-kev
+python -m bootwarden.datafeeds snapshot-export kev-snapshot.tar.gz
 
 # Sneakernet kev-snapshot.tar.gz into the air-gapped network, then:
 export COGNIS_FEEDS_CACHE=/srv/cognis-feeds
-python -m uefiscan.datafeeds snapshot-import kev-snapshot.tar.gz
-uefiscan feeds get --cve CVE-2025-47827 --offline   # works with zero network
+python -m bootwarden.datafeeds snapshot-import kev-snapshot.tar.gz
+bootwarden feeds get --cve CVE-2025-47827 --offline   # works with zero network
 ```
 
 The committed tests run **entirely offline** against a small trimmed real-data
@@ -327,7 +327,7 @@ so CI never reaches out to the network.
 
 ```mermaid
 flowchart LR
-  IN[target / manifest] --> P[uefiscan<br/>checks + rules]
+  IN[target / manifest] --> P[bootwarden<br/>checks + rules]
   P --> OUT[findings (JSON / SARIF)]
 ```
 
@@ -336,10 +336,10 @@ flowchart LR
 <a name="ai-stack"></a>
 ## Use it from any AI stack
 
-`uefiscan` is interoperable with every popular way of using AI:
+`bootwarden` is interoperable with every popular way of using AI:
 
-- **MCP server** — `uefiscan mcp` (Claude Desktop, Cursor, Cognis.Studio, [uncensored-fleet](https://github.com/cognis-digital/uncensored-fleet))
-- **OpenAI-compatible / JSON** — pipe `uefiscan scan . --format json` into any agent or LLM
+- **MCP server** — `bootwarden mcp` (Claude Desktop, Cursor, Cognis.Studio, [uncensored-fleet](https://github.com/cognis-digital/uncensored-fleet))
+- **OpenAI-compatible / JSON** — pipe `bootwarden scan . --format json` into any agent or LLM
 - **LangChain · CrewAI · AutoGen · LlamaIndex** — wrap the CLI/JSON as a tool in one line
 - **CI / scripts** — exit codes + SARIF for non-AI pipelines
 
@@ -354,11 +354,11 @@ variables, unsigned PE/TE module count) ships in five languages under
 
 | Language | Run | Test |
 |---|---|---|
-| Python (reference) | `uefiscan scan firmware.bin` | `pytest -q` |
+| Python (reference) | `bootwarden scan firmware.bin` | `pytest -q` |
 | JavaScript / Node | `node ports/javascript/index.js firmware.bin` | `node --test` |
 | Go | `cd ports/go && go run . firmware.bin` | `go test ./...` |
 | Rust | `cd ports/rust && cargo run -- firmware.bin` | `cargo test` |
-| Shell (POSIX) | `bash ports/shell/uefiscan.sh firmware.bin` | `bash ports/shell/test.sh` |
+| Shell (POSIX) | `bash ports/shell/bootwarden.sh firmware.bin` | `bash ports/shell/test.sh` |
 
 The Go and Rust ports are built and tested on GitHub runners
 ([`.github/workflows/ports.yml`](.github/workflows/ports.yml)). See
@@ -369,7 +369,7 @@ The Go and Rust ports are built and tested on GitHub runners
 <a name="how-it-compares"></a>
 ## How it compares
 
-| | **Cognis uefiscan** | CHIPSEC + UEFITool |
+| | **Cognis bootwarden** | CHIPSEC + UEFITool |
 |---|:---:|:---:|
 | Self-hostable, no account | ✅ | varies |
 | Single command, zero config | ✅ | ⚠️ |
@@ -385,7 +385,7 @@ The Go and Rust ports are built and tested on GitHub runners
 <a name="integrations"></a>
 ## Integrations
 
-Pipes into your stack: **SARIF** for code-scanning, **JSON** for anything, an **MCP server** (`uefiscan mcp`) for AI agents, and a webhook forwarder for SIEM/Slack/Jira. See [`docs/INTEGRATIONS.md`](docs/INTEGRATIONS.md).
+Pipes into your stack: **SARIF** for code-scanning, **JSON** for anything, an **MCP server** (`bootwarden mcp`) for AI agents, and a webhook forwarder for SIEM/Slack/Jira. See [`docs/INTEGRATIONS.md`](docs/INTEGRATIONS.md).
 
 <div align="right"><a href="#top">↑ back to top</a></div>
 
@@ -393,18 +393,18 @@ Pipes into your stack: **SARIF** for code-scanning, **JSON** for anything, an **
 ## Install — every way, every platform
 
 ```bash
-pip install "git+https://github.com/cognis-digital/uefiscan.git"    # pip (works today)
-pipx install "git+https://github.com/cognis-digital/uefiscan.git"   # isolated CLI
-uv tool install "git+https://github.com/cognis-digital/uefiscan.git" # uv
-pip install cognis-uefiscan                                          # PyPI (when published)
-docker run --rm ghcr.io/cognis-digital/uefiscan:latest --help        # Docker
-brew install cognis-digital/tap/uefiscan                             # Homebrew tap
-curl -fsSL https://raw.githubusercontent.com/cognis-digital/uefiscan/main/install.sh | sh
+pip install "git+https://github.com/cognis-digital/bootwarden.git"    # pip (works today)
+pipx install "git+https://github.com/cognis-digital/bootwarden.git"   # isolated CLI
+uv tool install "git+https://github.com/cognis-digital/bootwarden.git" # uv
+pip install bootwarden                                          # PyPI (when published)
+docker run --rm ghcr.io/cognis-digital/bootwarden:latest --help        # Docker
+brew install cognis-digital/tap/bootwarden                             # Homebrew tap
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/bootwarden/main/install.sh | sh
 ```
 
 | Linux | macOS | Windows | Docker | Cloud |
 |---|---|---|---|---|
-| `scripts/setup-linux.sh` | `scripts/setup-macos.sh` | `scripts/setup-windows.ps1` | `docker run ghcr.io/cognis-digital/uefiscan` | [DEPLOY.md](docs/DEPLOY.md) (AWS/Azure/GCP/k8s) |
+| `scripts/setup-linux.sh` | `scripts/setup-macos.sh` | `scripts/setup-windows.ps1` | `docker run ghcr.io/cognis-digital/bootwarden` | [DEPLOY.md](docs/DEPLOY.md) (AWS/Azure/GCP/k8s) |
 
 <div align="right"><a href="#top">↑ back to top</a></div>
 
@@ -427,7 +427,7 @@ curl -fsSL https://raw.githubusercontent.com/cognis-digital/uefiscan/main/instal
 
 PRs, new rules, and demo scenarios are welcome under the collaboration-pull model — see [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
 
-> ### ⭐ If `uefiscan` saved you time, **star it** — it genuinely helps others find it.
+> ### ⭐ If `bootwarden` saved you time, **star it** — it genuinely helps others find it.
 
 ## Interoperability
 
@@ -445,4 +445,4 @@ Source-available under the **Cognis Open Collaboration License (COCL) v1.0** —
 
 ## Bundled vulnerability database
 
-Ships `uefiscan/cognis_vulndb.jsonl.gz` — **262,351 real vulnerabilities** (OSV across 7 ecosystems) with detailed metadata; offline stdlib loader `vulndb_local.VulnDB`, air-gap ready.
+Ships `bootwarden/cognis_vulndb.jsonl.gz` — **262,351 real vulnerabilities** (OSV across 7 ecosystems) with detailed metadata; offline stdlib loader `vulndb_local.VulnDB`, air-gap ready.

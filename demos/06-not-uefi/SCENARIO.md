@@ -2,7 +2,7 @@
 
 **Where this comes from.** An analyst grabbed a flash region from an embedded
 device and isn't sure it's the UEFI image - it might be a coprocessor blob, a
-config partition, or a bad dump. UEFISCAN should refuse to bless it.
+config partition, or a bad dump. BOOTWARDEN should refuse to bless it.
 
 **What's in the image.**
 * 8 KB of structured-but-non-UEFI bytes: **no `_FVH` firmware volume**, no
@@ -11,8 +11,8 @@ config partition, or a bad dump. UEFISCAN should refuse to bless it.
 ## Run it
 
 ```sh
-python -m uefiscan scan demos/06-not-uefi/blob.bin
-python -m uefiscan scan demos/06-not-uefi/blob.bin --format json | jq .findings
+python -m bootwarden scan demos/06-not-uefi/blob.bin
+python -m bootwarden scan demos/06-not-uefi/blob.bin --format json | jq .findings
 ```
 
 ## Expected result
