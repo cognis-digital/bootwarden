@@ -1,0 +1,19 @@
+[2026-08-16 14:26:40] === enhance · uefiscan · words=120000 loc>=10000 langs=9 push=True ===
+[2026-08-16 14:26:46] phase DOCS — longform 120000-word corpus -> docs/corpus/
+[2026-08-16 23:09:53] phase POLYGLOT — expanding to >= 10000 LOC across 9 languages
+[2026-08-16 23:10:31]   facets: ['firmware_parser', 'secure_boot_validator', 'module_signature_checker', 's3_script_analyzer', 'smm_threat_detector', 'report_generator']
+[2026-08-16 23:12:28]   +polyglot/python/firmware_parser.py  (loc now ~5097)
+[2026-08-16 23:14:58]   +polyglot/go/firmware_parser.go  (loc now ~5152)
+[2026-08-16 23:19:14]   +polyglot/rust/firmware_parser.rs  (loc now ~5570)
+[2026-08-16 23:23:30]   +polyglot/typescript/firmware_parser.ts  (loc now ~5993)
+[2026-08-16 23:27:48]   +polyglot/c/firmware_parser.c  (loc now ~6406)
+[2026-08-16 23:32:06]   +polyglot/cpp/firmware_parser.cpp  (loc now ~6843)
+[2026-08-16 23:36:41]   +polyglot/java/firmware_parser.java  (loc now ~7311)
+[2026-08-16 23:41:26]   +polyglot/ruby/firmware_parser.rb  (loc now ~7685)
+[2026-08-16 23:46:14]   +polyglot/csharp/firmware_parser.cs  (loc now ~7755)
+[2026-08-16 23:51:06]   +polyglot/python/secure_boot_validator.py  (loc now ~8250)
+[2026-08-16 23:55:55]   +polyglot/go/secure_boot_validator.go  (loc now ~8737)
+[2026-08-17 00:00:49]   +polyglot/rust/secure_boot_validator.rs  (loc now ~9196)
+[2026-08-17 00:05:40]   +polyglot/typescript/secure_boot_validator.ts  (loc now ~9600)
+[2026-08-17 00:10:33]   +polyglot/c/secure_boot_validator.c  (loc now ~9983)
+[2026-08-17 00:15:20]   +polyglot/cpp/secure_boot_validator.cpp  (loc now ~10431)
